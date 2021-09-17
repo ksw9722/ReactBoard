@@ -1,31 +1,54 @@
 import * as React from 'react'
 import {Navbar,Container,Nav,NavDropdown} from 'react-bootstrap'
+import {
 
-const Menu = () => {
+    NavLink
+} from "react-router-dom";
+
+const Menu = (props:any) => {
     return (
         <div>
-            <Navbar bg="light" expand="xl">
-                <Container className="me-auto">
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#aboutme">About Me</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown className="justify-content-end" title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                    </Navbar.Collapse>
-                </Container>
+            <div className="pb-5 mb-3">
+            <Navbar bg="dark" expand="xl fixed-top"  variant="dark">
+                    <Container className="">
+                        <Navbar.Brand href="/" className="">
+                        <img
+                                alt=""
+                                src="./static/react-logo.png"
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-center margin-right: 5px"
+                        />{''}
+                            &nbsp;React-Board
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Nav className="me-auto">
+                            <NavLink to="/" className="nav-link">Home</NavLink>
+                            <NavLink  to="/aboutme" className="nav-link">About Me</NavLink>
+                            <NavLink to="/link" className="nav-link">Link</NavLink>
+                            <NavDropdown className="" title="Dropdown" id="basic-nav-dropdown">
+                            <NavLink to="/action/3.1" className="dropdown-item">Action</NavLink>
+                            <NavLink to="/action/3.2" className="dropdown-item">Another action</NavLink>
+                            <NavLink to="/action/3.3" className="dropdown-item">Something</NavLink>
+                            <NavDropdown.Divider />
+                            <NavLink to="/action/3.4" className="dropdown-item">Separated link</NavLink>
+                            </NavDropdown>
+                        </Nav>
+                        <Nav>
+                            <NavLink to="/login" className="nav-link">Login</NavLink>
+                        </Nav>
+                    </Container>
             </Navbar>
+            </div>
+            <div>
+                {props.children}
+            </div>
         </div>
     )
 }
 
+
+const styles={'brandImage':{'margin-right':'5px',
+                            'd-inline-block':true,
+                            'align-top':true}}
 export default Menu;
